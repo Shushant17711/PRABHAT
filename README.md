@@ -150,3 +150,7 @@ PROBLEM_STATEMENT.md  the SIH26078 brief and where the design diverges from it
 `PROBLEM_STATEMENT.md` and the code comments in `dashboard/` refer to a
 `DESIGN.md` and a task list that are not part of this repository. The status
 table in `PROBLEM_STATEMENT.md` describes an earlier version of the code.
+
+## License
+
+[MIT](LICENSE)
