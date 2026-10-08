@@ -308,8 +308,9 @@ export default function App() {
                 aria-label="Forecast lead time"
               />
               <div className="ticks">
-                <span>T+0</span><span>T+60h</span><span>T+120h</span>
-                <span>T+180h</span><span>T+240h</span>
+                {[0, 0.25, 0.5, 0.75, 1].map((f) => (
+                  <span key={f}>T+{leads[Math.round(f * maxIndex)] ?? 0}h</span>
+                ))}
               </div>
             </div>
 

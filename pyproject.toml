@@ -9,38 +9,20 @@ description = "Tracked-object extreme weather anomaly detection with runtime hal
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Team Orbit" }]
-
-# Kept in sync with DESIGN.md §7. TempestExtremes is a conda-forge C++ binary and
-# is deliberately NOT listed here: it is a runtime dependency discovered on PATH,
-# not an installable Python package (see prabhat/labels/tempest.py).
 dependencies = [
-    "pydantic>=2.5",
-    "pyyaml>=6.0",
     "numpy>=1.25",
-    "xarray>=2024.1",
-    "zarr>=2.16",
-    "netcdf4>=1.6",
     "scipy>=1.11",
-    "scikit-learn>=1.3",
+    "pydantic>=2.5",
     "fastapi>=0.110",
-    "uvicorn>=0.27",
+    "uvicorn[standard]>=0.27",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.4", "pytest-cov>=4.1", "httpx>=0.27"]
-# Phase 3+ only. Heavy; not needed for `coarse` mode (DESIGN §9).
-ml = ["torch>=2.2", "faiss-cpu>=1.7"]
-# Network fetchers. Never on the demo critical path (DESIGN §13.6).
-fetch = ["gcsfs>=2024.2", "cdsapi>=0.6"]
+dev = ["pytest>=7.4", "httpx>=0.27"]
 
 [tool.setuptools.packages.find]
 include = ["prabhat*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-filterwarnings = ["ignore::DeprecationWarning"]
-markers = [
-    "needs_tempest: requires the TempestExtremes binaries on PATH",
-    "needs_cuda: requires a CUDA GPU",
-    "needs_network: requires network access; never part of the demo path",
-]
+pythonpath = ["."]

@@ -1,26 +1,20 @@
-# DESIGN §6: these directories must exist but are never committed.
-artifacts/
-data/cache/
-data/era5/
-*.zarr
-*.sqlite
-*.sqlite3
-
-.venv/
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
+build/
+.venv/
 .pytest_cache/
-.ipynb_checkpoints/
 
+# Runtime output: the verification ledger is written here
+artifacts/
+
+# Dashboard
 dashboard/node_modules/
 dashboard/dist/
 
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
 *.bak
-
-# ...but the directories themselves are load-bearing and must survive a clone.
-!artifacts/.gitkeep
-!data/cache/.gitkeep
-
-# Locally installed TempestExtremes prefix (micromamba); not committed.
-.tools/
